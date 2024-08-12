@@ -1,5 +1,5 @@
-name: 'add-code-reviewers'
-description: 'Action to add reviews to a pull request'
+name: 'pr-sizer'
+description: 'Action to add labels to a pull request based on the size of the changes'
 author: 'Alex Parra'
 
 runs:
@@ -7,23 +7,15 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.token }}
-    - ${{ inputs.reviewers-file-path }}
-    - ${{ inputs.number }}
+    - ${{ inputs.pr_number }}
 
 inputs:
   token:
     description: 'GitHub Token'
     required: true
-  reviewers-file-path:
-    description: 'Reviewers file'
-    required: true
-  number:
+  pr_number:
     description: 'Pull request number'
     required: true
-
-outputs:
-  reviewers:
-    description: 'Reviewers added to the pull request'
 
 branding:
   icon: 'thumbs-up'
