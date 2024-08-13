@@ -30,6 +30,10 @@ const repo =
   process.env.PLUGIN_REPO ||
   process.env.GITHUB_REPO
 
+const commitSha = process.env.CI_COMMIT_SHA || process.env.DRONE_COMMIT_SHA
+console.log(`PR number: ${prNumber}`)
+console.log(commitSha)
+
 async function getPRSize() {
   try {
     const { data: pr } = await octokit.pulls.get({
