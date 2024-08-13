@@ -24,15 +24,22 @@ const owner =
   process.env.PLUGIN_GITHUB_OWNER ||
   process.env.PLUGIN_OWNER ||
   process.env.GITHUB_OWNER
-const repo =
+
+let repo =
   (repoMatch && repoMatch[2]) ||
-  process.env.PLUGIN_GITHUB_REPO ||
-  process.env.PLUGIN_REPO ||
-  process.env.GITHUB_REPO
+  (process.env.PLUGIN_GITHUB_REPO as string) ||
+  (process.env.PLUGIN_REPO as string) ||
+  (process.env.GITHUB_REPO as string)
+
+if (repo.endsWith('.git')) {
+  repo = repo.slice(0, -4)
+}
 
 const commitSha = process.env.CI_COMMIT_SHA || process.env.DRONE_COMMIT_SHA
 console.log(`PR number: ${prNumber}`)
 console.log(commitSha)
+console.log(`Owner: ${owner}`)
+console.log(`Repo: ${repo}`)
 
 async function getPRSize() {
   try {
