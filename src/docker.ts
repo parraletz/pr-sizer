@@ -22,10 +22,12 @@ const repoMatch = remoteUrl.match(/github\.com\/([^\/]+)\/([^\/]+)(\.git)?$/)
 const owner =
   (repoMatch && repoMatch[1]) ||
   process.env.PLUGIN_GITHUB_OWNER ||
+  process.env.PLUGIN_OWNER ||
   process.env.GITHUB_OWNER
 const repo =
   (repoMatch && repoMatch[2]) ||
   process.env.PLUGIN_GITHUB_REPO ||
+  process.env.PLUGIN_REPO ||
   process.env.GITHUB_REPO
 
 async function getPRSize() {
