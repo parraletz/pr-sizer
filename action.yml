@@ -1,4 +1,4 @@
-name: "PR Size Labeler"
+name: "Simple PR Size Labeler"
 description: "Labels a Pull Request based on the number of changed lines"
 author: "Alex Parra"
 
