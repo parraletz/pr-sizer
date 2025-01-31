@@ -1,22 +1,25 @@
-name: 'pr-sizer'
-description: 'Action to add labels to a pull request based on the size of the changes'
-author: 'Alex Parra'
-
-runs:
-  using: docker
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.token }}
-    - ${{ inputs.pr_number }}
+name: "PR Size Labeler"
+description: "Labels a Pull Request based on the number of changed lines"
+author: "Alex Parra"
 
 inputs:
-  token:
-    description: 'GitHub Token'
+  github_token:
+    description: "GitHub Token for authentication"
     required: true
   pr_number:
-    description: 'Pull request number'
+    description: "Pull Request number"
+    required: true
+  repo_owner:
+    description: "Repository owner"
+    required: true
+  repo_name:
+    description: "Repository name"
     required: true
 
+runs:
+  using: "node20"
+  main: "dist/index.js"
+
 branding:
-  icon: 'thumbs-up'
-  color: 'blue'
+  icon: "tag"
+  color: "blue"
