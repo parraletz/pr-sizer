@@ -4,10 +4,7 @@ import { Octokit } from '@octokit/rest'
 async function run() {
   try {
     const githubToken = core.getInput('github_token', { required: true })
-    const prNumber = parseInt(
-      core.getInput('pr_number', { required: true }),
-      10
-    )
+    const prNumber = core.getInput('pr_number', { required: true })
 
     const octokit = new Octokit({ auth: githubToken })
 
