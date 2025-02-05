@@ -8,8 +8,8 @@ async function run() {
 
     const octokit = new Octokit({ auth: githubToken })
 
-    const repo = core.getInput('repo', { required: true })
-    const owner = core.getInput('owner', { required: true })
+    const repo = core.getInput('repo_name', { required: true })
+    const owner = core.getInput('repo_owner', { required: true })
 
     core.info(`Fetching PR #${prNumber} from ${owner}/${repo}...`)
 
