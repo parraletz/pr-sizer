@@ -8,6 +8,12 @@ runs:
   using: "node20"
   main: "dist/index.js"
 
+
+inputs:
+  github_token:
+    description: "The GitHub token"
+    required: false
+
 branding:
   icon: "tag"
   color: "blue"

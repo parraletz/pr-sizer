@@ -4,7 +4,7 @@ import { Octokit } from '@octokit/rest'
 
 async function run() {
   try {
-    const githubToken = process.env.GITHUB_TOKEN || ''
+    const githubToken = core.getInput("github_token") || process.env.GITHUB_TOKEN || ''
     const octokit = new Octokit({ auth: githubToken })
 
     const context = github.context
