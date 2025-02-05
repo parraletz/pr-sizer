@@ -34,7 +34,7 @@ async function run() {
     await octokit.issues.addLabels({
       owner,
       repo,
-      issue_number: prNumber,
+      issue_number: Number(prNumber),
       labels: [label]
     })
 
