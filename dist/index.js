@@ -31459,7 +31459,7 @@ const dist_src_Octokit = Octokit.plugin(requestLog, legacyRestEndpointMethods, p
 async function run() {
     try {
         const githubToken = core.getInput('github_token', { required: true });
-        const prNumber = parseInt(core.getInput('pr_number', { required: true }), 10);
+        const prNumber = core.getInput('pr_number', { required: true });
         const octokit = new dist_src_Octokit({ auth: githubToken });
         const repo = core.getInput('repo', { required: true });
         const owner = core.getInput('owner', { required: true });
@@ -31467,7 +31467,7 @@ async function run() {
         const { data: pr } = await octokit.pulls.get({
             owner,
             repo,
-            pull_number: prNumber
+            pull_number: Number(prNumber)
         });
         const changedLines = pr.additions + pr.deletions;
         core.info(`Total changed lines: ${changedLines}`);
@@ -31486,7 +31486,7 @@ async function run() {
         await octokit.issues.addLabels({
             owner,
             repo,
-            issue_number: prNumber,
+            issue_number: Number(prNumber),
             labels: [label]
         });
         core.info(`Successfully added label: ${label}`);
