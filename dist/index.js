@@ -35733,7 +35733,7 @@ const dist_src_Octokit = Octokit.plugin(requestLog, legacyRestEndpointMethods, p
 
 async function run() {
     try {
-        const githubToken = process.env.GITHUB_TOKEN || '';
+        const githubToken = core.getInput("github_token") || process.env.GITHUB_TOKEN || '';
         const octokit = new dist_src_Octokit({ auth: githubToken });
         const context = github.context;
         const { repo, owner } = context.repo;
