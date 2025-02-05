@@ -16,7 +16,7 @@ async function run() {
     const { data: pr } = await octokit.pulls.get({
       owner,
       repo,
-      pull_number: prNumber
+      pull_number: Number(prNumber)
     })
 
     const changedLines = pr.additions + pr.deletions
