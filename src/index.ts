@@ -1,15 +1,15 @@
 import * as core from '@actions/core'
+import * as github from '@actions/github'
 import { Octokit } from '@octokit/rest'
 
 async function run() {
   try {
     const githubToken = core.getInput('github_token', { required: true })
-    const prNumber = core.getInput('pr_number', { required: true })
-
     const octokit = new Octokit({ auth: githubToken })
 
-    const repo = core.getInput('repo_name', { required: true })
-    const owner = core.getInput('repo_owner', { required: true })
+    const context = github.context
+    const { repo, owner } = context.repo
+    const prNumber = context.payload.pull_request?.number || context.issue.number
 
     core.info(`Fetching PR #${prNumber} from ${owner}/${repo}...`)
 
