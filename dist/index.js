@@ -31461,8 +31461,8 @@ async function run() {
         const githubToken = core.getInput('github_token', { required: true });
         const prNumber = core.getInput('pr_number', { required: true });
         const octokit = new dist_src_Octokit({ auth: githubToken });
-        const repo = core.getInput('repo', { required: true });
-        const owner = core.getInput('owner', { required: true });
+        const repo = core.getInput('repo_name', { required: true });
+        const owner = core.getInput('repo_owner', { required: true });
         core.info(`Fetching PR #${prNumber} from ${owner}/${repo}...`);
         const { data: pr } = await octokit.pulls.get({
             owner,
