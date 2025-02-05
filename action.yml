@@ -2,10 +2,6 @@ name: "Simple PR Size Labeler"
 description: "Labels a Pull Request based on the number of changed lines"
 author: "Alex Parra"
 
-inputs:
-  github_token:
-    description: "GitHub Token for authentication"
-    required: true
 
 
 runs:
